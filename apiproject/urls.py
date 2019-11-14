@@ -21,5 +21,5 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('questions/', views.questionList.as_view()),
+    path('questions/', views.create_post),
 ]
