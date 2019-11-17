@@ -30,7 +30,7 @@ def create_post(request):
     response_data = {}
 
     if request.POST.get('action') == 'post':
-        question= request.POST.get('title')
+        question= request.POST.get('question')
         courses = request.POST.get('courses')
 
         response_data['question'] = question

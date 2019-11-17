@@ -1,0 +1,13 @@
+<form method="POST" id="post-form">
+  {% csrf_token %}
+  <div class="form-group">
+    <label>Question</label>
+    <input type="text" class="form-control" id="question" >
+  </div>
+   <div class="form-group">
+     <label>Courses</label>
+     <textarea class="form-control" id="course" ></textarea>
+   </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Cancel</button>
+</form>
