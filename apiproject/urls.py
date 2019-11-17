@@ -20,7 +20,13 @@ from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
+# router = routers.DefaultRouter()
+# router.register(r'users', views.UserViewSet)
+# router.register(r'groups', views.GroupViewSet)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('questions/', views.questionList.as_view()),
+    # path('questions/', views.questionList.as_view()),
+    path(r'questions/create',views.questionCreateApiView.as_view(),name='recipe-create')
 ]
