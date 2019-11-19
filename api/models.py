@@ -6,3 +6,15 @@ class questions(models.Model):
 
 	def __str__(self):
 		return self.question
+
+
+class profile(models.Model):
+	email=models.CharField(max_length=30)
+	username=models.CharField(max_length=10)
+	address=models.CharField(max_length=10)
+	# emp_id=models.IntegerField()
+
+	def __str__(self):
+		return self.email
+
+
