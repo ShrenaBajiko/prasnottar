@@ -53,9 +53,10 @@ class profileList(APIView):
 class answerCreateApiView(generics.CreateAPIView):
     serializer_class = answerCreateSerializer
 
+class answerList(APIView):
     def get(self,request):
-        ans= comment.objects.all()
-        serializer = answerCreateSerializer(ans, many=True)
+        queryset= comment.objects.all()
+        serializer = answerCreateSerializer(queryset, many=True)
         return Response(serializer.data)
 
 # class answerList(generics.ListAPIView):

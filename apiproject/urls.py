@@ -30,7 +30,7 @@ urlpatterns = [
     path(r'questions/create',views.questionCreateApiView.as_view(),name='questions-create'),
     path('profile/', views.profileList.as_view()),
     path(r'profile/create',views.profileCreateApiView.as_view(),name='profile-create'), 
-    path(r'comment/create',views.answerCreateApiView.as_view())   
-     # path(r'comment/',views.answerListView.as_view())   
+    path(r'comment/create',views.answerCreateApiView.as_view()),   
+    path('comment/',views.answerList.as_view())   
 
 ]
