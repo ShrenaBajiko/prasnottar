@@ -18,3 +18,10 @@ class profile(models.Model):
 		return self.email
 
 
+class comment(models.Model):
+	answer = models.CharField(max_length = 100)
+
+	def __str__(self):
+		return self.answer		
+
+

@@ -7,8 +7,10 @@ from rest_framework import status
 from rest_framework import viewsets
 from . models import questions
 from . models import profile
+from . models import comment
 from . serializers import questionsCreateSerializer
 from . serializers import profileCreateSerializer
+from . serializers import answerCreateSerializer
 from rest_framework import generics
 from django_filters import rest_framework as filters
 from django_filters import rest_framework as SearchFilters
@@ -47,6 +49,19 @@ class profileList(APIView):
         pro= profile.objects.all()
         serializer = profileCreateSerializer(pro, many=True)
         return Response(serializer.data)
+
+class answerCreateApiView(generics.CreateAPIView):
+    serializer_class = answerCreateSerializer
+
+    def get(self,request):
+        ans= comment.objects.all()
+        serializer = answerCreateSerializer(ans, many=True)
+        return Response(serializer.data)
+
+# class answerList(generics.ListAPIView):
+#     queryset = comment.objects.all()
+#     serializer_class = answerCreateSerializer
+
 
 
 

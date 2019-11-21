@@ -1,7 +1,9 @@
 from rest_framework import serializers
 #from rest_framework import employees
 from . models import questions
+from . models import comment
 from . models import profile
+
 
 class questionsCreateSerializer(serializers.ModelSerializer):
 	
@@ -15,5 +17,13 @@ class profileCreateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model= profile
 		fields=('email','username','address') 
+
+
+class answerCreateSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model=comment
+		fields=('__all__')
+
 
 		
