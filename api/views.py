@@ -10,6 +10,9 @@ from . models import profile
 from . serializers import questionsCreateSerializer
 from . serializers import profileCreateSerializer
 from rest_framework import generics
+from django_filters import rest_framework as filters
+from django_filters import rest_framework as SearchFilters
+
 
 
 
@@ -17,16 +20,27 @@ class questionCreateApiView(generics.CreateAPIView):
     serializer_class = questionsCreateSerializer
 
 # class questionList(APIView):
-    def get(self,request):
-        ques= questions.objects.all()
-        serializer = questionsCreateSerializer(ques, many=True)
-        return Response(serializer.data)
+#     def get(self,request):
+#         queryset= questions.objects.all()
+#         serializer = questionsCreateSerializer(queryset ,many=True)
+#         return Response(serializer.data)
+#         filter_backends = (SearchFilters,)
+#         search_fields = ('courses')
+
+
+FILTER_REQ_COLUMNS = [field.name for field in questions._meta.get_fields()]
+class questionList(generics.ListAPIView):
+    queryset = questions.objects.all()
+    serializer_class = questionsCreateSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = FILTER_REQ_COLUMNS
+       
 
 
 class profileCreateApiView(generics.CreateAPIView):
     serializer_class = profileCreateSerializer
 
-# class profileList(APIView):
+class profileList(APIView):
 
 
     def get(self,request):

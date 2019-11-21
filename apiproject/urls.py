@@ -21,15 +21,15 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
 # router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
-# router.register(r'groups', views.GroupViewSet)
+# router.register(r'questions', views.questionCreateApiView)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('questions/', views.questionList.as_view()),
+    path('questions/', views.questionList.as_view()),
     path(r'questions/create',views.questionCreateApiView.as_view(),name='questions-create'),
-    # path('profile/', views.profileList.as_view()),
-    path(r'profile/create',views.profileCreateApiView.as_view(),name='profile-create')      
+    path('profile/', views.profileList.as_view()),
+    path(r'profile/create',views.profileCreateApiView.as_view(),name='profile-create') 
+         
 
 ]
