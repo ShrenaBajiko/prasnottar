@@ -16,22 +16,17 @@ from rest_framework import generics
 class questionCreateApiView(generics.CreateAPIView):
     serializer_class = questionsCreateSerializer
 
-
-
-
-class questionList(APIView):
-
-
-	def get(self,request):
-		ques= questions.objects.all()
-		serializer = questionsCreateSerializer(ques, many=True)
-		return Response(serializer.data)
+# class questionList(APIView):
+    def get(self,request):
+        ques= questions.objects.all()
+        serializer = questionsCreateSerializer(ques, many=True)
+        return Response(serializer.data)
 
 
 class profileCreateApiView(generics.CreateAPIView):
     serializer_class = profileCreateSerializer
 
-class profileList(APIView):
+# class profileList(APIView):
 
 
     def get(self,request):
