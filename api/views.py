@@ -8,9 +8,11 @@ from rest_framework import viewsets
 from . models import questions
 from . models import profile
 from . models import comment
+from . models import tutor
 from . serializers import questionsCreateSerializer
 from . serializers import profileCreateSerializer
 from . serializers import answerCreateSerializer
+from . serializers import tutorCreateSerializer
 from rest_framework import generics
 from django_filters import rest_framework as filters
 from django_filters import rest_framework as SearchFilters
@@ -20,15 +22,6 @@ from django_filters import rest_framework as SearchFilters
 
 class questionCreateApiView(generics.CreateAPIView):
     serializer_class = questionsCreateSerializer
-
-# class questionList(APIView):
-#     def get(self,request):
-#         queryset= questions.objects.all()
-#         serializer = questionsCreateSerializer(queryset ,many=True)
-#         return Response(serializer.data)
-#         filter_backends = (SearchFilters,)
-#         search_fields = ('courses')
-
 
 FILTER_REQ_COLUMNS = [field.name for field in questions._meta.get_fields()]
 class questionList(generics.ListAPIView):
@@ -59,39 +52,12 @@ class answerList(APIView):
         serializer = answerCreateSerializer(queryset, many=True)
         return Response(serializer.data)
 
-# class answerList(generics.ListAPIView):
-#     queryset = comment.objects.all()
-#     serializer_class = answerCreateSerializer
 
+class tutorCreateApiView(generics.CreateAPIView):
+    queryset= tutor.objects.all()
+    serializer_class = tutorCreateSerializer
 
-
-
-
-#     # def post(self):
-#     #     pass       
-# def post(self,request):
-#     ques= questions.objects.all()
-#     serializer = questionsSerializer(ques, many=True)
-#     return Response(serializer.data)
-# # def post(request):
-#         posts = questions.objects.all()
-#         response_data = {}
-
-#         if request.POST('action') == 'post':
-#             question= request.POST('question')
-#             courses = request.POST('courses')
-
-#             response_data['question'] = question
-#             response_data['courses'] = courses
-#             questions.objects.create(
-#                 question = question,
-#                 courses = courses,
-#                 )
-#             return JsonResponse(response_data)
-
-#     return render(request, 'create_post.html', {'posts':posts})     
-
-
-# from django.shortcuts import render
-# from django.http import JsonResponse
-# from .models import questions
+    def get(self,request):
+        queryset= tutor.objects.all()
+        serializer = tutorCreateSerializer(queryset, many=True)
+        return Response(serializer.data)

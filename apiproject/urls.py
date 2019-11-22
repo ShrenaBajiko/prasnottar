@@ -31,6 +31,6 @@ urlpatterns = [
     path('profile/', views.profileList.as_view()),
     path(r'profile/create',views.profileCreateApiView.as_view(),name='profile-create'), 
     path(r'comment/create',views.answerCreateApiView.as_view()),   
-    path('comment/',views.answerList.as_view())   
-
+    path('comment/',views.answerList.as_view()),  
+    path('tutor/',views.tutorCreateApiView.as_view()) 
 ]

@@ -3,13 +3,14 @@ from rest_framework import serializers
 from . models import questions
 from . models import comment
 from . models import profile
+from . models import tutor
 
 
 class questionsCreateSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model= questions
-		fields =('question','courses')
+		fields =('__all__')
 
 
 class profileCreateSerializer(serializers.ModelSerializer):
@@ -24,6 +25,16 @@ class answerCreateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=comment
 		fields=('__all__')
+
+
+class tutorCreateSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model=tutor
+		fields=('__all__')
+
+
+
 
 
 		
