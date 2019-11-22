@@ -57,6 +57,7 @@ class tutorCreateApiView(generics.CreateAPIView):
     queryset= tutor.objects.all()
     serializer_class = tutorCreateSerializer
 
+class tutorList(APIView):
     def get(self,request):
         queryset= tutor.objects.all()
         serializer = tutorCreateSerializer(queryset, many=True)
