@@ -28,7 +28,7 @@ class tutor(models.Model):
 	name = models.CharField(max_length = 50)
 	address = models.CharField(max_length=50)
 	qualification = models.CharField(max_length=100)
-	email = models.CharField(max_length = 80, null=True)
+	email = models.CharField(max_length = 80)
 
 	def __str__(self):
 		return self.name				
